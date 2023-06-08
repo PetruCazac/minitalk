@@ -1,0 +1,102 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/05 12:19:38 by pcazac            #+#    #+#             */
+/*   Updated: 2023/06/07 15:49:56 by pcazac           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../header/push_swap.h"
+// The first element goes at the bottom
+void	rotate(t_dlist **stack, char st)
+{
+	t_dlist	*head;
+	t_dlist	*tail;
+
+	head = *stack;
+	tail = head;
+	while (tail->next)
+		tail = tail->next;
+	*stack = head->next;
+	head->next->previous = NULL;
+	head->next = NULL;
+	head->previous = tail;
+	tail->next = head;
+	ft_printf("r%c\n", st);
+	return ;
+}
+// The last element goes at the top
+void	rrotate(t_dlist **stack, char st)
+{
+	t_dlist	*head;
+	t_dlist	*tail;
+
+	head = *stack;
+	tail = head;
+	while (tail->next)
+		tail = tail->next;
+	tail->previous->next = NULL;
+	tail->previous = NULL;
+	head->previous = tail;
+	tail->next = head;
+	*stack = tail;
+	ft_printf("rr%c\n", st);
+	return ;
+}
+
+void	push_to_empty(t_dlist **stack1, t_dlist **stack2)
+{
+	t_dlist	*temp1;
+	t_dlist	*temp2;
+
+	temp1 = *stack1;
+	temp2 = *stack2;
+	*stack1 = temp1->next;
+	(*stack1)->next->previous = NULL;
+	*stack2 = temp1;
+	temp1->next = temp2;
+	temp2->previous = temp1;
+	return ;
+}
+// Push from stack 1 to stack 2
+void	push(t_dlist **stack1, t_dlist **stack2, char st)
+{
+	t_dlist	*temp1;
+
+	if (!(*stack1))
+		return ;
+	if (!(*stack2))
+	{
+		temp1 = *stack1;
+		*stack1 = temp1->next;
+		temp1->next->previous = NULL;
+		*stack2 = temp1;
+		temp1->next = NULL;
+		return ;
+	}
+	else if (*stack2 != NULL)
+		push_to_empty(stack1, stack2);
+	ft_printf("p%c\n", st);
+	return ;
+}
+// Swap the first 2 elements
+void	swap(t_dlist **stack, char st)
+{
+	t_dlist	*temp;
+	t_dlist	*head;
+
+	head = *stack;
+	temp = head->next;
+	head->previous = temp;
+	temp->previous = NULL;
+	head->next = temp->next;
+	temp->next->previous = head;
+	temp->next = head;
+	*stack = temp;
+	ft_printf("s%c\n", st);
+	return ;
+}

@@ -1,0 +1,6 @@
+DONE 1. Fix the memory leak apprearing on the iOS
+DONE 2. Fix the ft_split
+DONE 3. Check each and every push and swap and rotation function individually
+4. Sort all the numbers and assign an index to each of them
+5. Make the sorting algorithm that will calculate how to sort the most efficient way
+6. Make a 
