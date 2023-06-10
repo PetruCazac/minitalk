@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dlstadd_back.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 11:00:29 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/04 18:17:28 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/10 19:52:35 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,18 @@ void	ft_dlstadd_back(t_dlist **lst, t_dlist *new)
 	if (*lst == NULL)
 	{
 		*lst = new;
+		new->end = NULL;
 		return ;
 	}
 	temp = *lst;
-	while (temp->next != NULL)
+	while (temp->end != NULL)
 	{
-		temp = temp->next;
+		temp = temp->end;
 	}
 	temp->next = new;
 	new->previous = temp;
+	temp->end = temp->next;
+	new->end = NULL;
+	(*lst)->previous = new;
+	new->next = (*lst);
 }

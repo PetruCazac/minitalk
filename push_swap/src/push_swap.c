@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:58:55 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/08 08:32:20 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/10 20:25:30 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	t_dlist	*a;
 	t_dlist	*b;
 	t_dlist	*temp;
-	int		i;
+	// int		i;
 
 	a = NULL;
 	b = NULL;
@@ -53,51 +53,50 @@ int	main(int argc, char **argv)
 	// while (temp)
 	// {
 	// 	ft_printf("-#%i#-\n", temp->number);
-	// 	temp = temp->next;
+	// 	temp = temp->end;
 	// }
 	// ft_printf("Nb. of elements: -#%i#-\n", count_list(&a));
 	// ft_printf("Max element: -#%i#-\n", (find_max(&a))->number);
 	// ft_printf("Min element: -#%i#-\n", (find_min(&a))->number);
-	// rotate(&a);
+	// rotate(&a, 'a');
 	// temp = a;
 	// while (temp)
 	// {
 	// 	ft_printf("Rotated -#%i#-\n", temp->number);
-	// 	temp = temp->next;
+	// 	temp = temp->end;
 	// }
-	// rrotate(&a);
+	// rrotate(&a, 'a');
 	// temp = a;
 	// while (temp)
 	// {
 	// 	ft_printf("Inverse Rotated -#%i#-\n", temp->number);
-	// 	temp = temp->next;
+	// 	temp = temp->end;
 	// }
-	// swap(&a);
+	// swap(&a, 'a');
 	// temp = a;
 	// while (temp)
 	// {
 	// 	ft_printf("Swap -#%i#-\n", temp->number);
-	// 	temp = temp->next;
+	// 	temp = temp->end;
 	// }
-	// swap(&a);
+	// swap(&a, 'a');
 	// temp = a;
 	// while (temp)
 	// {
 	// 	ft_printf("Swap back -#%i#-\n", temp->number);
-	// 	temp = temp->next;
+	// 	temp = temp->end;
 	// }
-	// push(&a, &b);
-	// push(&a, &b);
+	// push(&a, &b, 'b');
 	// temp = a;
 	// while (temp)
 	// {
 	// 	ft_printf("Push a-#%i#-\n", temp->number);
-	// 	temp = temp->next;
+	// 	temp = temp->end;
 	// }
 	// 	while (b)
 	// {
 	// 	ft_printf("Push b-#%i#-\n", b->number);
-	// 	b = b->next;
+	// 	b = b->end;
 	// }
 	// Allocate the numbers to a linked list
 	// make_list(argc, argv, a);

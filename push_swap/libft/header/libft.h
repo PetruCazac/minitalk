@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 10:55:38 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/05 18:28:37 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/10 19:45:43 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct d_list
 {
 	struct d_list	*previous;
 	struct d_list	*next;
+	struct d_list	*end;
 	int				index;
 	int				number;
 }					t_dlist;

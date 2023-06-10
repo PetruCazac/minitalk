@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:02:32 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/08 13:44:06 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/10 19:35:56 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,29 @@ void	sort_small(t_dlist **list_a)
 	i = count_list(list_a);
 	if (i < 3)
 		return (sort_2(list_a));
-	presort(list_a);
-	push_min_max(list_a, &list_b);
+	// presort(list_a);
+	// push_min_max(list_a, &list_b);
 	sort_3(list_a);
 	if (!list_b)
 		return ;
-	sort_back(list_a, &list_b);
+	// sort_back(list_a, &list_b);
 	return ;
 }
 
-sort_back(t_dlist **list_a, t_dlist **list_b)
-{
-	t_dlist	*a;
-	t_dlist	*b;
+// sort_back(t_dlist **list_a, t_dlist **list_b)
+// {
+// 	t_dlist	*a;
+// 	t_dlist	*b;
 
-	a = *list_a;
-	b = *list_b;
-	while (a->number > b->number)
-	{
+// 	a = *list_a;
+// 	b = *list_b;
+// 	while (a->number > b->number)
+// 	{
 		
 		
-	}
-	return ;
-}
+// 	}
+// 	return ;
+// }
 
 void	sort_3(t_dlist **list_a)
 {

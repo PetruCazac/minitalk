@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:01:40 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/06 16:55:55 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/10 19:47:06 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	count_list(t_dlist **list)
 	while(temp)
 	{
 		i++;
-		temp = temp->next;
+		temp = temp->end;
 	}
 	return (i);
 }
@@ -43,7 +43,7 @@ t_dlist	*find_min(t_dlist **list)
 			i = temp->number;
 			min = temp;
 		}
-		temp = temp->next;
+		temp = temp->end;
 	}
 	return (min);
 }
@@ -64,7 +64,7 @@ t_dlist	*find_max(t_dlist **list)
 			i = temp->number;
 			max = temp;
 		}
-		temp = temp->next;
+		temp = temp->end;
 	}
 	return (max);
 }

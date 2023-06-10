@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 12:53:02 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/05 18:28:58 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/10 20:24:22 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	check_duplicates(t_dlist **a, int i)
 	{
 		if (a_temp->number == i)
 			return (0);
-		a_temp = a_temp->next;
+		a_temp = a_temp->end;
 	}
 	return (1);
 }
@@ -70,8 +70,6 @@ int	check_input(int argc, char **argv, t_dlist **a)
 	int		j;
 
 	i = 0;
-	// if (arg_count(argc, argv) == 0)
-	// 	return (0);
 	while (++i < argc)
 	{
 		arr = ft_split(argv[i], ' ');

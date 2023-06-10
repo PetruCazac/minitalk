@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:27:24 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/08 14:15:38 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/10 21:08:18 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,29 @@ t_dlist	*copy_list(t_dlist **a)
 	return (b);
 }
 
+void	insert(t_dlist	**start, t_dlist **min)
+{
+	
+}
+
 void	presort(t_dlist **a)
 {
 	t_dlist	*b;
+	t_dlist	*min;
+	t_dlist	*pos;
 
 	b = copy_list(a);
-	
+	pos = b;
+	min = find_min(&b);
+	// sorting algorithm insert algorithm
+	while (sort_check(&b))
+	{
+		while (b)
+		{
+			insert(pos, min);
+			pos = min;
+			b = pos;
+			b = b->end;
+		}
+	}
 }

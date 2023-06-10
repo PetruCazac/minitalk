@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:19:38 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/07 15:49:56 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/10 20:20:53 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,10 @@ void	rotate(t_dlist **stack, char st)
 	t_dlist	*tail;
 
 	head = *stack;
-	tail = head;
-	while (tail->next)
-		tail = tail->next;
+	tail = head->previous;
 	*stack = head->next;
-	head->next->previous = NULL;
-	head->next = NULL;
-	head->previous = tail;
-	tail->next = head;
+	head->end = NULL;
+	tail->end = head;
 	ft_printf("r%c\n", st);
 	return ;
 }
@@ -36,19 +32,15 @@ void	rrotate(t_dlist **stack, char st)
 	t_dlist	*tail;
 
 	head = *stack;
-	tail = head;
-	while (tail->next)
-		tail = tail->next;
-	tail->previous->next = NULL;
-	tail->previous = NULL;
-	head->previous = tail;
-	tail->next = head;
+	tail = head->previous;
 	*stack = tail;
+	tail->previous->end = NULL;
+	tail->end = head;
 	ft_printf("rr%c\n", st);
 	return ;
 }
 
-void	push_to_empty(t_dlist **stack1, t_dlist **stack2)
+void	push_to_non_empty(t_dlist **stack1, t_dlist **stack2)
 {
 	t_dlist	*temp1;
 	t_dlist	*temp2;
@@ -56,9 +48,12 @@ void	push_to_empty(t_dlist **stack1, t_dlist **stack2)
 	temp1 = *stack1;
 	temp2 = *stack2;
 	*stack1 = temp1->next;
-	(*stack1)->next->previous = NULL;
+	temp1->next->previous = temp1->previous;
+	temp1->previous->next = temp1->next;
 	*stack2 = temp1;
 	temp1->next = temp2;
+	temp1->previous = temp2->previous;
+	temp1->previous->next = temp1;
 	temp2->previous = temp1;
 	return ;
 }
@@ -73,13 +68,16 @@ void	push(t_dlist **stack1, t_dlist **stack2, char st)
 	{
 		temp1 = *stack1;
 		*stack1 = temp1->next;
-		temp1->next->previous = NULL;
+		temp1->next->previous = temp1->previous;
+		temp1->previous->next = temp1->next;
 		*stack2 = temp1;
+		temp1->previous = NULL;
 		temp1->next = NULL;
+		temp1->end = NULL;
 		return ;
 	}
 	else if (*stack2 != NULL)
-		push_to_empty(stack1, stack2);
+		push_to_non_empty(stack1, stack2);
 	ft_printf("p%c\n", st);
 	return ;
 }
@@ -91,12 +89,15 @@ void	swap(t_dlist **stack, char st)
 
 	head = *stack;
 	temp = head->next;
-	head->previous = temp;
-	temp->previous = NULL;
-	head->next = temp->next;
-	temp->next->previous = head;
-	temp->next = head;
 	*stack = temp;
+	temp->previous = head->previous;
+	temp->previous->next = temp;
+	head->previous = temp;
+	head->end = temp->end;
+	temp->end = head;
+	head->next = temp->next;
+	temp->next = head;
+	head->next->previous = head;
 	ft_printf("s%c\n", st);
 	return ;
 }

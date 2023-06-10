@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:04:06 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/06 17:17:29 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/10 20:39:35 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ int	sort_check(t_dlist **list)
 
 	i = 0;
 	temp = *list;
-	while (temp->next)
+	while (temp->end)
 	{
-		temp2 = temp->next;
+		temp2 = temp->end;
 		while (temp2)
 		{
 			if (temp->number > temp2->number)
 				return (0);
-			temp2 = temp2->next;
+			temp2 = temp2->end;
 		}
-		temp = temp->next;
+		temp = temp->end;
 	}
 	return (1);
 }
