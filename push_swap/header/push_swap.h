@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:01:15 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/07 15:51:10 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/11 16:19:52 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ void	sort_small(t_dlist **list_a);
 t_dlist	*find_min(t_dlist **list);
 t_dlist	*find_max(t_dlist **list);
 int		sort_check(t_dlist **list);
+void	presort(t_dlist **a, t_dlist **b);
+void	push_b(t_dlist **a, t_dlist **b, int segments);
 
 #endif

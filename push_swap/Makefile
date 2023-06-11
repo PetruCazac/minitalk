@@ -6,7 +6,7 @@
 #    By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/15 08:56:05 by pcazac            #+#    #+#              #
-#    Updated: 2023/06/07 10:32:49 by pcazac           ###   ########.fr        #
+#    Updated: 2023/06/11 16:09:01 by pcazac           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ LIB_PATH = -Llibft
 LIBRARY = -lft
 OBJ_PATH = obj
 
-SRC = push_swap.c init_check.c push_swap_utils.c list_utils.c sort_check.c sort_small.c
+SRC = push_swap.c init_check.c push_swap_utils.c list_utils.c sort_check.c\
+		sort_small.c presort.c push_b.c
 
 OBJ = $(SRC:%.c=$(OBJ_PATH)/%.o)
 

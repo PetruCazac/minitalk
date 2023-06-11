@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 11:00:29 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/10 19:52:35 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/11 16:16:22 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,10 @@ void	ft_dlstadd_back(t_dlist **lst, t_dlist *new)
 	}
 	temp = *lst;
 	while (temp->end != NULL)
-	{
 		temp = temp->end;
-	}
 	temp->next = new;
+	temp->end = new;
 	new->previous = temp;
-	temp->end = temp->next;
 	new->end = NULL;
 	(*lst)->previous = new;
 	new->next = (*lst);

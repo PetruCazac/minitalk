@@ -3,24 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:58:55 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/11 08:27:42 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/11 18:59:10 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Make the input check, see if the numbers are inputed as a string or as
-// multiple arguments check if all the numbers are in a string or sepratly
-// for each argument
 #include "../header/push_swap.h"
 
 int	main(int argc, char **argv)
 {
 	t_dlist	*a;
-	// t_dlist	*b;
-	t_dlist	*temp;
-	int		i;
+	t_dlist	*b;
+	// t_dlist	*temp;
+	int		segments;
 
 	a = NULL;
 	b = NULL;
@@ -31,23 +28,29 @@ int	main(int argc, char **argv)
 		write(STDERR_FILENO, "Error\n", 6);
 		return (EXIT_FAILURE);
 	}
-	i = count_list(&a);
-	if (i < 5)
-		sort_small(&a);
-	temp = a;
-	while (temp)
-	{
-		ft_printf("-#%i#-\n", temp->number);
-		temp = temp->next;
-	}
-	// if (i > 10)
-	// 	sort_big(&a);
-	if (sort_check(&a) == 0)
-		ft_printf("Not sorted\n");
-	else if (sort_check(&a) == 1)
-		ft_printf("Sorted\n");
+	segments = 2;
+	presort(&a, &b);
+	push_b(&a, &b, segments);
+	// temp = b;
+	// while (temp)
+	// {
+	// 	ft_printf("%i\n", temp->number);
+	// 	temp = temp->end;
+	// }
+	// sort_back(&a, &b);
 	return (EXIT_SUCCESS);
 }
+
+
+	// i = count_list(&a);
+	// if (i < 5)
+	// 	sort_small(&a);
+	// if (i > 10)
+	// 	sort_big(&a);
+	// if (sort_check(&a) == 0)
+	// 	ft_printf("Not sorted\n");
+	// else if (sort_check(&a) == 1)
+	// 	ft_printf("Sorted\n");
 
 	// temp = a;
 	// while (temp)
