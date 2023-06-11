@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:58:55 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/10 20:25:30 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/11 08:27:42 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 int	main(int argc, char **argv)
 {
 	t_dlist	*a;
-	t_dlist	*b;
+	// t_dlist	*b;
 	t_dlist	*temp;
-	// int		i;
+	int		i;
 
 	a = NULL;
 	b = NULL;
