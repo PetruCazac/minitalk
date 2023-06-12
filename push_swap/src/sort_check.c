@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:04:06 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/10 20:39:35 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/11 19:28:41 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ int	sort_check(t_dlist **list)
 {
 	t_dlist	*temp;
 	t_dlist	*temp2;
-	int		i;
 
-	i = 0;
 	temp = *list;
 	while (temp->end)
 	{

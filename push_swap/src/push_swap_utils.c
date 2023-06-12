@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:19:38 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/11 18:59:51 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/11 19:48:49 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	rrotate(t_dlist **stack, char st)
 	t_dlist	*head;
 	t_dlist	*tail;
 
+	if ((*stack)->end == NULL)
+		return ;
 	head = *stack;
 	tail = head->previous;
 	*stack = tail;

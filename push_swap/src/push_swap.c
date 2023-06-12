@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:58:55 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/11 18:59:10 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/12 10:18:11 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	segments = 2;
+	if (sort_check(&a))
+		return (EXIT_SUCCESS);
 	presort(&a, &b);
 	push_b(&a, &b, segments);
 	// temp = b;
 	// while (temp)
 	// {
-	// 	ft_printf("%i\n", temp->number);
+	// 	ft_printf("exit b stack: %i\n", temp->number);
 	// 	temp = temp->end;
 	// }
 	// sort_back(&a, &b);
