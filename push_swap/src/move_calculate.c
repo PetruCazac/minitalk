@@ -6,9 +6,13 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:43:00 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/11 13:43:27 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/12 16:49:27 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
+void	move_calculate(t_dlist **a, t_dlist **b)
+{
+	
+}

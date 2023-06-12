@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:19:38 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/11 19:48:49 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/12 17:37:15 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	push_to_non_empty(t_dlist **stack1, t_dlist **stack2)
 	temp1->previous->next = temp1->next;
 	*stack2 = temp1;
 	temp1->next = temp2;
+	temp1->end = temp2;
 	if (temp2->previous)
 		temp1->previous = temp2->previous;
 	else
@@ -62,7 +63,6 @@ void	push_to_non_empty(t_dlist **stack1, t_dlist **stack2)
 	temp1->previous->next = temp1;
 	temp2->previous = temp1;
 	i++;
-	ft_printf("%i\n", i);
 	return ;
 }
 // Push from stack 1 to stack 2

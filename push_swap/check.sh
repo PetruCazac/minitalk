@@ -20,13 +20,13 @@ else
 fi
 
 # Use the Python executable in your script
-$PYTHON_EXECUTABLE your_script.py
+# $PYTHON_EXECUTABLE your_script.py
 
 # echo "\n\n---- Test 1 : 1 random value ----\n"
 # if [ $? -eq 0 ]
 # then
 # 	n=1
-# 	random=$(python3 random/randomizer.py $n)
+# 	random=$($PYTHON_EXECUTABLE random/randomizer.py $n)
 # 	echo ./push_swap "$random"
 # 	./push_swap "$random"
 # fi
@@ -35,25 +35,25 @@ $PYTHON_EXECUTABLE your_script.py
 # if [ $? -eq 0 ]
 # then
 # 	n=10
-# 	error_random=$(python3 random/error_randomizer.py $n)
+# 	error_random=$($PYTHON_EXECUTABLE random/error_randomizer.py $n)
 # 	echo ./push_swap "$error_random"
 # 	./push_swap "$error_random"
 # fi
 
-# echo "\n\n---- Test 3 : 3 random value ----\n"
-# if [ $? -eq 0 ]
-# then
-# 	n=3
-# 	random=$(python3 random/randomizer.py $n)
-# 	echo ./push_swap "$random"
-# 	./push_swap "$random"
-# fi
+echo "\n\n---- Test 3 : 1-- random value ----\n"
+if [ $? -eq 0 ]
+then
+	n=100
+	random=$($PYTHON_EXECUTABLE random/randomizer.py $n)
+	echo ./push_swap "$random"
+	./push_swap "$random"
+fi
 
 # echo "\n\n---- Test 4 : 5 random value ----\n"
 # if [ $? -eq 0 ]
 # then
 # 	n=5
-# 	random=$(python3 random/randomizer.py $n)
+# 	random=$($PYTHON_EXECUTABLE random/randomizer.py $n)
 # 	echo ./push_swap "$random"
 # 	./push_swap "$random"
 # fi
@@ -62,17 +62,37 @@ $PYTHON_EXECUTABLE your_script.py
 # if [ $? -eq 0 ]
 # then
 # 	n=100
-# 	random=$(python3 random/randomizer.py $n)
+# 	random=$($PYTHON_EXECUTABLE random/randomizer.py $n)
 # 	echo ./push_swap "$random"
 # 	numbers=$(./push_swap "$random")
-# 	python3 visualizer.py "$numbers"
+# 	$PYTHON_EXECUTABLE visualizer.py "$numbers"
 # fi
 
-echo "\n\n---- Test 6 : 50 random value ----\n"
-if [ $? -eq 0 ]
-then
-	n=30
-	random=$(python3 random/randomizer.py $n)
-	echo ./push_swap "$random"
-	./push_swap "$random"
-fi
+# echo "\n\n---- Test 5 : 10 random value ----\n"
+# if [ $? -eq 0 ]
+# then
+# 	n=10
+# 	random=$($PYTHON_EXECUTABLE random/randomizer.py $n)
+# 	echo ./push_swap "$random"
+# 	numbers=$(./push_swap "$random")
+# 	$PYTHON_EXECUTABLE visualizer.py "$numbers"
+# fi
+
+# echo "\n\n---- Test 5 : 5 random value ----\n"
+# if [ $? -eq 0 ]
+# then
+# 	n=5
+# 	random=$($PYTHON_EXECUTABLE random/randomizer.py $n)
+# 	echo ./push_swap "$random"
+# 	numbers=$(./push_swap "$random")
+# 	# $PYTHON_EXECUTABLE visualizer.py "$numbers"
+# fi
+# echo "\n\n---- Test 6 : 30 random values ----\n"
+# if [ $? -eq 0 ]
+# then
+# 	n=30
+# 	random=$($PYTHON_EXECUTABLE random/randomizer.py $n)
+# 	echo ./push_swap "$random"
+# 	./push_swap "$random"
+# fi
+
