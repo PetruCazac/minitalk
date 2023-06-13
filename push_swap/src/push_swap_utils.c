@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:19:38 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/13 14:12:41 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/13 20:05:24 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	rotate(t_dlist **stack, char st)
 	t_dlist	*tail;
 
 	head = *stack;
-	tail = head->previous;
+	tail = head->prev;
 	*stack = head->next;
 	head->end = NULL;
 	tail->end = head;
@@ -34,9 +34,9 @@ void	rrotate(t_dlist **stack, char st)
 	if ((*stack)->end == NULL)
 		return ;
 	head = *stack;
-	tail = head->previous;
+	tail = head->prev;
 	*stack = tail;
-	tail->previous->end = NULL;
+	tail->prev->end = NULL;
 	tail->end = head;
 	ft_printf("rr%c\n", st);
 	return ;
@@ -50,17 +50,17 @@ void	push_to_non_empty(t_dlist **stack1, t_dlist **stack2, char st)
 	temp1 = *stack1;
 	temp2 = *stack2;
 	*stack1 = temp1->end;
-	temp1->next->previous = temp1->previous;
-	temp1->previous->next = temp1->next;
+	temp1->next->prev = temp1->prev;
+	temp1->prev->next = temp1->next;
 	*stack2 = temp1;
 	temp1->next = temp2;
 	temp1->end = temp2;
-	if (temp2->previous)
-		temp1->previous = temp2->previous;
+	if (temp2->prev)
+		temp1->prev = temp2->prev;
 	else
-		temp1->previous = temp2;
-	temp1->previous->next = temp1;
-	temp2->previous = temp1;
+		temp1->prev = temp2;
+	temp1->prev->next = temp1;
+	temp2->prev = temp1;
 	ft_printf("p%c\n", st);
 	return ;
 }
@@ -75,10 +75,10 @@ void	push(t_dlist **stack1, t_dlist **stack2, char st)
 	{
 		temp1 = *stack1;
 		*stack1 = temp1->next;
-		temp1->next->previous = temp1->previous;
-		temp1->previous->next = temp1->next;
+		temp1->next->prev = temp1->prev;
+		temp1->prev->next = temp1->next;
 		*stack2 = temp1;
-		temp1->previous = NULL;
+		temp1->prev = NULL;
 		temp1->next = NULL;
 		temp1->end = NULL;
 		ft_printf("p%c\n", st);
@@ -97,14 +97,14 @@ void	swap(t_dlist **stack, char st)
 	head = *stack;
 	temp = head->next;
 	*stack = temp;
-	temp->previous = head->previous;
-	temp->previous->next = temp;
-	head->previous = temp;
+	temp->prev = head->prev;
+	temp->prev->next = temp;
+	head->prev = temp;
 	head->end = temp->end;
 	temp->end = head;
 	head->next = temp->next;
 	temp->next = head;
-	head->next->previous = head;
+	head->next->prev = head;
 	ft_printf("s%c\n", st);
 	return ;
 }

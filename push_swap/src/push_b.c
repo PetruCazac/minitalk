@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 14:51:12 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/13 19:31:29 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/13 20:01:52 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ void	move_element(t_dlist *element, t_dlist **a, t_dlist **b)
 {
 	while ((*b) != element)
 	{
-		if (element->direction == 1 && (*b) != element)
+		if (element->dir == 1 && (*b) != element)
 			rotate(b, 'b');
-		else if (element->direction == 2 && (*b) != element)
+		else if (element->dir == 2 && (*b) != element)
 			rrotate(b, 'b');
 	}
 	while ((*a) != element->pos)
 	{
-		if (element->pos->direction == 1 && (*a) != element->pos)
+		if (element->pos->dir == 1 && (*a) != element->pos)
 			rotate(a, 'a');
-		else if (element->pos->direction == 2 && (*a) != element->pos)
+		else if (element->pos->dir == 2 && (*a) != element->pos)
 			rrotate(a, 'a');
 	}
 	push(b, a, 'a');

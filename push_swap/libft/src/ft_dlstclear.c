@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:28:28 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/11 18:14:35 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/13 20:04:14 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_dlstclear(t_dlist **lst)
 	while (*lst)
 	{
 		temp = *lst;
-		(*lst)->previous = NULL;
+		(*lst)->prev = NULL;
 		(*lst)->next = NULL;
 		*lst = temp->end;
 		free(temp);
