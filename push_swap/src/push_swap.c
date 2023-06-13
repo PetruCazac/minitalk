@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:58:55 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/12 18:56:35 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/13 08:41:24 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_dlist	*a;
 	t_dlist	*b;
+	// int		count;
 	// t_dlist	*temp;
 	
 	a = NULL;
@@ -32,17 +33,23 @@ int	main(int argc, char **argv)
 	presort(&a, &b);
 	push_b(&a, &b);
 	// temp = b;
+	// count = 0;
 	// while (temp)
 	// {
 	// 	ft_printf("b : %i\n", temp->number);
+	// 	count++;
 	// 	temp = temp->end;
 	// }
+	// ft_printf("count b : %i\n", count);
+	// count = 0;
 	// temp = a;
 	// while (temp)
 	// {
 	// 	ft_printf("a : %i\n", temp->number);
+	// 	count++;
 	// 	temp = temp->end;
 	// }
+	// ft_printf("count a: %i\n", count);
 	// sort_back(&a, &b);
 	return (EXIT_SUCCESS);
 }

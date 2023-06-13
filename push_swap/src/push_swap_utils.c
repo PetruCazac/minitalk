@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:19:38 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/12 17:37:15 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/13 08:37:14 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	rrotate(t_dlist **stack, char st)
 	return ;
 }
 
-void	push_to_non_empty(t_dlist **stack1, t_dlist **stack2)
+void	push_to_non_empty(t_dlist **stack1, t_dlist **stack2, char st)
 {
 	t_dlist	*temp1;
 	t_dlist	*temp2;
@@ -63,6 +63,7 @@ void	push_to_non_empty(t_dlist **stack1, t_dlist **stack2)
 	temp1->previous->next = temp1;
 	temp2->previous = temp1;
 	i++;
+	ft_printf("p%c\n", st);
 	return ;
 }
 // Push from stack 1 to stack 2
@@ -82,11 +83,11 @@ void	push(t_dlist **stack1, t_dlist **stack2, char st)
 		temp1->previous = NULL;
 		temp1->next = NULL;
 		temp1->end = NULL;
+		ft_printf("p%c\n", st);
 		return ;
 	}
-	else if (*stack2 != NULL)
-		push_to_non_empty(stack1, stack2);
-	ft_printf("p%c\n", st);
+	else if (*stack2)
+		push_to_non_empty(stack1, stack2, st);
 	return ;
 }
 // Swap the first 2 elements

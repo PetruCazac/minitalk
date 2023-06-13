@@ -10,9 +10,9 @@ make re
 OS=$(uname)
 
 # Set the Python executable based on the operating system
-if [[ "$OS" == "Linux" ]]; then
+if [ "$OS" = "Linux" ]; then
     PYTHON_EXECUTABLE="python3"
-elif [[ "$OS" == "Darwin" ]]; then
+elif [ "$OS" = "Darwin" ]; then
     PYTHON_EXECUTABLE="python"
 else
     echo "Unsupported operating system."
