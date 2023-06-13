@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 12:53:02 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/10 20:24:22 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/13 17:58:59 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	check_int(char *a)
 	j = 0;
 	if (a[j] != '+' && a[j] != '-' && !ft_isdigit(a[j]))
 		return (0);
+	if (a[j] == '-' || a[j] == '+')
+		j++;
 	while (a[j])
 	{
 		if (!ft_isdigit(a[j]))

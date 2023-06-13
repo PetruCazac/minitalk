@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 10:55:38 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/13 11:20:43 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/13 19:29:42 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@ typedef struct d_list
 	struct d_list	*previous;
 	struct d_list	*next;
 	struct d_list	*end;
-	struct d_list	*bigger;
+	struct d_list	*pos;
 	int				index;
 	int				number;
-	int				moves_a;
-	int				moves_b;
+	int				common_moves;
+	int				moves_up;
+	int				moves_down;
 	int				moves;
 	int				direction; //rotate upwards == 1; rotate downwards == 2
+	int				common_dir;
 }					t_dlist;
 
 # ifndef BUFFER_SIZE

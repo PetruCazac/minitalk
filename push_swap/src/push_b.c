@@ -6,12 +6,12 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 14:51:12 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/13 15:22:37 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/13 19:31:29 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
-
+// Check the function
 void	move_element(t_dlist *element, t_dlist **a, t_dlist **b)
 {
 	while ((*b) != element)
@@ -21,11 +21,11 @@ void	move_element(t_dlist *element, t_dlist **a, t_dlist **b)
 		else if (element->direction == 2 && (*b) != element)
 			rrotate(b, 'b');
 	}
-	while ((*a) != element->bigger)
+	while ((*a) != element->pos)
 	{
-		if (element->bigger->direction == 1 && (*a) != element->bigger)
+		if (element->pos->direction == 1 && (*a) != element->pos)
 			rotate(a, 'a');
-		else if (element->bigger->direction == 2 && (*a) != element->bigger)
+		else if (element->pos->direction == 2 && (*a) != element->pos)
 			rrotate(a, 'a');
 	}
 	push(b, a, 'a');
