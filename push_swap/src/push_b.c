@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 14:51:12 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/13 11:33:47 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/13 15:22:37 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,47 @@
 
 void	move_element(t_dlist *element, t_dlist **a, t_dlist **b)
 {
-	t_dlist	*ta;
-	t_dlist	*tb;
-
-	ta = *a;
-	tb = *b;
-	while ((*b) != element && (*a) != element->bigger)
+	while ((*b) != element)
 	{
 		if (element->direction == 1 && (*b) != element)
 			rotate(b, 'b');
 		else if (element->direction == 2 && (*b) != element)
 			rrotate(b, 'b');
-		if (element->bigger->index == 1 && (*a) != element->bigger)
+	}
+	while ((*a) != element->bigger)
+	{
+		if (element->bigger->direction == 1 && (*a) != element->bigger)
 			rotate(a, 'a');
-		else if (element->direction == 2 && (*a) != element->bigger)
+		else if (element->bigger->direction == 2 && (*a) != element->bigger)
 			rrotate(a, 'a');
 	}
 	push(b, a, 'a');
+}
+
+void	final_rotate(t_dlist **a)
+{
+	int		i;
+	t_dlist	*temp;
+	int		m;
+
+	m = count_list(a);
+	i = 0;
+	temp = *a;
+	while (temp->index != 0)
+	{
+		temp = temp->end;
+		i++;
+	}
+	if (i <= m / 2)
+	{
+		while ((*a)->index != 0)
+			rotate(a, 'a');
+	}
+	else if (i > m / 2)
+	{
+		while ((*a)->index != 0)
+			rrotate(a, 'a');
+	}
 }
 
 void	push_b(t_dlist **a, t_dlist **b)
@@ -38,6 +62,7 @@ void	push_b(t_dlist **a, t_dlist **b)
 	int		max;
 	int		med;
 	int		j;
+	// t_dlist	*element;
 	
 	max = (find_max(a))->index;
 	med = max / 2;
@@ -53,4 +78,5 @@ void	push_b(t_dlist **a, t_dlist **b)
 	sort_small(a);
 	while (count_list(b) != 0)
 		move_element(move_calculate(a, b), a, b);
+	final_rotate(a);
 }

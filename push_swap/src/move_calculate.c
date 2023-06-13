@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:43:00 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/13 11:51:08 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/13 13:51:16 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	moves_b(t_dlist **b)
 		i++;
 		temp = temp->end;
 	}
-	i = 0;
-	while (i <= m && temp)
+	i = m / 2;
+	while (i > 0 && temp)
 	{
 		temp->moves_b = i;
 		temp->direction = 2;
-		i++;
+		i--;
 		temp = temp->end;
 	}
 }
@@ -47,19 +47,19 @@ void	moves_a(t_dlist **a)
 	i = 0;
 	temp = *a;
 	m = count_list(a);
-	while (i < (m / 2)&& temp)
+	while (i <= (m / 2)&& temp)
 	{
 		temp->moves_a = i;
 		temp->direction = 1;
 		i++;
 		temp = temp->end;
 	}
-	i = 0;
-	while (i <= m && temp)
+	i = m / 2;
+	while (i > 0 && temp)
 	{
 		temp->moves_a = i;
 		temp->direction = 2;
-		i++;
+		i--;
 		temp = temp->end;
 	}
 }
@@ -68,17 +68,23 @@ void	find_place(t_dlist **a, t_dlist **b)
 {
 	t_dlist	*ta;
 	t_dlist	*tb;
+	t_dlist	*pos;
 
-	ta = *a;
 	tb = *b;
+	pos = NULL;
 	while (tb)
 	{
 		ta = *a;
 		tb->bigger = ta;
 		while (ta)
 		{
-			if (tb->bigger->index < ta->index && ta->index < tb->bigger->index)
+			if (tb->index < ta->index)
+			{
+				pos = tb->bigger;
 				tb->bigger = ta;
+				if (pos->index < ta->index && pos->index > tb->index)
+					tb->bigger = pos;
+			}
 			ta = ta->end;
 		}
 		tb = tb->end;
@@ -89,7 +95,6 @@ t_dlist	*choose_smaller(t_dlist **b)
 {
 	t_dlist	*element;
 	t_dlist	*tb;
-	int		moves;
 
 	tb = *b;
 	tb->moves = tb->moves_b + tb->bigger->moves_a;
@@ -98,8 +103,9 @@ t_dlist	*choose_smaller(t_dlist **b)
 	{
 		if (tb->moves < element->moves)
 			element = tb;
-		moves = tb->moves_b + tb->bigger->moves_a;
 		tb = tb->end;
+		if (tb)
+			tb->moves = tb->moves_b + tb->bigger->moves_a;
 	}
 	return (element);
 }

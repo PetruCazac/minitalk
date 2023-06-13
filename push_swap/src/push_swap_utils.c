@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:19:38 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/13 08:37:14 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/13 14:12:41 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,10 @@ void	push_to_non_empty(t_dlist **stack1, t_dlist **stack2, char st)
 {
 	t_dlist	*temp1;
 	t_dlist	*temp2;
-	static int	i = 0;
 
 	temp1 = *stack1;
 	temp2 = *stack2;
-	*stack1 = temp1->next;
+	*stack1 = temp1->end;
 	temp1->next->previous = temp1->previous;
 	temp1->previous->next = temp1->next;
 	*stack2 = temp1;
@@ -62,7 +61,6 @@ void	push_to_non_empty(t_dlist **stack1, t_dlist **stack2, char st)
 		temp1->previous = temp2;
 	temp1->previous->next = temp1;
 	temp2->previous = temp1;
-	i++;
 	ft_printf("p%c\n", st);
 	return ;
 }
