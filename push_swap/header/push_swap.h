@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:01:15 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/12 19:00:17 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/13 11:32:54 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	push_b(t_dlist **a, t_dlist **b);
 // void	pushq(t_dlist **stack1, t_dlist **stack2);
 // void	swapq(t_dlist **stack);
 int		average (t_dlist **a, int size);
+t_dlist	*move_calculate(t_dlist **a, t_dlist **b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 09:55:12 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/10 19:41:23 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/13 11:12:27 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ t_dlist	*ft_dlstnew(int content)
 	{
 		tmp->number = content;
 		tmp->index = 0;
+		tmp->moves = 0;
+		tmp->moves_a = 0;
+		tmp->moves_b = 0;
+		tmp->bigger = NULL;
 		tmp->next = NULL;
 		tmp->previous = NULL;
 		tmp->end = NULL;
