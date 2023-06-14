@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 10:55:38 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/13 20:00:49 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/13 21:13:08 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct d_list
 	int				mv_up;
 	int				mv_down;
 	int				mv;
+	int				rest_up;
+	int				rest_down;
 	int				dir; //rotate upwards == 1; rotate downwards == 2
 }					t_dlist;
 
