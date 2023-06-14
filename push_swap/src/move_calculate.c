@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_calculate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:43:00 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/14 08:30:37 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/14 08:52:19 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,9 +200,8 @@ void	choose_smaller(t_dlist **b)
 			tb->pos->rest_down = 0;
 			tb->pos->rest_up = 0;
 			tb->mv = simple_moves;
-	
 		}
-		
+		if()
 		tb = tb->end;
 	}
 }
