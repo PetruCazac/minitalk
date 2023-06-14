@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 10:55:38 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/13 21:13:08 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/14 15:18:19 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ typedef struct d_list
 	int				mv;
 	int				rest_up;
 	int				rest_down;
-	int				dir; //rotate upwards == 1; rotate downwards == 2
+	int				pos_up;
+	int				pos_down;
+	int				dir; //rotate upwards, all == 1, 11; rotate downwards, all == 2, 22
 }					t_dlist;
 
 # ifndef BUFFER_SIZE

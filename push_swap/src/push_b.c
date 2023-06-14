@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 14:51:12 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/14 10:37:59 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/14 15:33:55 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,21 @@
 
 void	move_both(t_dlist *element, t_dlist **a, t_dlist **b)
 {
-	while (element->cm_down && element->cm_down)
+	while ((*b) != element || (*a) != element->pos)
 	{
-		if (element->cm_up != 0)
-		{
+		if (element->dir == 11)
 			rotate_both(a, b);
-			element->cm_up--;
-		}
-		else if (element->cm_down != 0)
-		{
+		else if (element->dir == 22)
 			rrotate_both(a, b);
-			element->cm_down--;
-		}
 	}
-	while (element->rest_up != 0)
-	{	
+	while ((*b) != element && element->dir == 11)
 		rotate(b, 'b');
-		element->rest_up--;
-	}
-	while (element->rest_down != 0)
-	{	
+	while ((*a) != element->pos && element->dir == 11)
+		rotate(a, 'a');
+	while ((*b) != element && element->dir == 22)
 		rrotate(b, 'b');
-		element->rest_down--;
-	}
-	while (element->pos->rest_up != 0)
-	{	
-		rotate(b, 'b');
-		element->pos->rest_up--;
-	}
-	while (element->pos->rest_down != 0)
-	{	
-		rrotate(b, 'b');
-		element->pos->rest_down--;
-	}
+	while ((*a) != element->pos && element->dir == 22)
+		rrotate(a, 'a');
 	push(b, a, 'a');
 }
 
@@ -54,16 +36,16 @@ void	move_element(t_dlist *element, t_dlist **a, t_dlist **b)
 {
 	while ((*b) != element)
 	{
-		if (element->mv_up != 0 && element->mv_down == 0 && (*b) != element)
+		if (element->dir == 21 && (*b) != element)
 			rotate(b, 'b');
-		else if (element->mv_down != 0 && element->mv_up == 0 && (*b) != element)
+		else if (element->dir == 12 && (*b) != element)
 			rrotate(b, 'b');
 	}
 	while ((*a) != element->pos)
 	{
-		if (element->pos->mv_up != 0 && element->pos->mv_down == 0 && (*a) != element->pos)
+		if (element->dir == 12 && (*a) != element->pos)
 			rotate(a, 'a');
-		else if (element->pos->mv_down != 0 && element->pos->mv_up == 0 && (*a) != element->pos)
+		else if (element->dir == 21 && (*a) != element->pos)
 			rrotate(a, 'a');
 	}
 	push(b, a, 'a');
@@ -71,9 +53,9 @@ void	move_element(t_dlist *element, t_dlist **a, t_dlist **b)
 
 void	choose_move(t_dlist *element, t_dlist **a, t_dlist **b)
 {
-	if (element->dir == 1)
+	if (element->dir == 11 || element->dir == 22)
 		move_both(element, a, b);
-	if (element->dir == 2)
+	if (element->dir == 12 || element->dir == 21)
 		move_element(element, a, b);
 	return ;
 }

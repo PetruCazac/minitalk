@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dlstnew.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 09:55:12 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/13 21:12:54 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/14 14:42:12 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_dlist	*ft_dlstnew(int content)
 		tmp->rest_up = 0;
 		tmp->rest_down = 0;
 		tmp->dir = 0;
+		tmp->pos_up = 0;
+		tmp->pos_down = 0;
 		tmp->pos = NULL;
 		tmp->next = NULL;
 		tmp->prev = NULL;

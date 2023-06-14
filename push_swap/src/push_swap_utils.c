@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:19:38 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/14 10:28:11 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/14 13:09:56 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	rotate(t_dlist **stack, char st)
 	t_dlist	*head;
 	t_dlist	*tail;
 
+	if ((*stack)->end == NULL)
+		return ;
 	head = *stack;
 	tail = head->prev;
 	*stack = head->next;
@@ -30,6 +32,8 @@ void	rotate_both(t_dlist **a, t_dlist **b)
 {
 	t_dlist	*head;
 	t_dlist	*tail;
+	if ((*a)->end == NULL)
+		return ;
 // Rotate stack a
 	head = *a;
 	tail = head->prev;

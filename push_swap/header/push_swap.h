@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:01:15 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/14 10:29:25 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/14 15:14:47 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,8 @@ int		average (t_dlist **a, int size);
 t_dlist	*move_calculate(t_dlist **a, t_dlist **b);
 void	rotate_both(t_dlist **a, t_dlist **b);
 void	rrotate_both(t_dlist **a, t_dlist **b);
+void	calculate_moves(t_dlist **b);
+t_dlist	*choose_smaller(t_dlist **b);
+int		compare_move(t_dlist *tb);
 
 #endif
