@@ -6,7 +6,7 @@
 #    By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/15 08:56:05 by pcazac            #+#    #+#              #
-#    Updated: 2023/06/13 11:34:19 by pcazac           ###   ########.fr        #
+#    Updated: 2023/06/14 12:14:13 by pcazac           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,7 @@ $(NAME): $(LIBFT) $(OBJ)
 
 $(LIBFT):
 	@echo "---Calling the library---"
-	make -C $(@D) fclean
-	make -C $(@D) all
+	make -C $(@D) -B
 
 $(OBJ_PATH)/%.o : %.c
 	@echo "---Santa's making objects---"

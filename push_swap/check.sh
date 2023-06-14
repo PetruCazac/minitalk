@@ -40,7 +40,7 @@ fi
 # 	./push_swap "$error_random"
 # fi
 
-echo "\n\n---- Test 3 : 1-- random value ----\n"
+echo "\n\n---- Test 3 : 100-- random value ----\n"
 if [ $? -eq 0 ]
 then
 	n=100
