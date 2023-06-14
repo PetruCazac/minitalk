@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:01:15 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/13 11:32:54 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/14 10:29:25 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,9 @@ t_dlist	*find_max(t_dlist **list);
 int		sort_check(t_dlist **list);
 void	presort(t_dlist **a, t_dlist **b);
 void	push_b(t_dlist **a, t_dlist **b);
-// void	rotateq(t_dlist **stack);
-// void	rrotateq(t_dlist **stack);
-// void	push_to_non_emptyq(t_dlist **stack1, t_dlist **stack2);
-// void	pushq(t_dlist **stack1, t_dlist **stack2);
-// void	swapq(t_dlist **stack);
 int		average (t_dlist **a, int size);
 t_dlist	*move_calculate(t_dlist **a, t_dlist **b);
+void	rotate_both(t_dlist **a, t_dlist **b);
+void	rrotate_both(t_dlist **a, t_dlist **b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:19:38 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/13 20:05:24 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/14 10:28:11 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,49 @@ void	rotate(t_dlist **stack, char st)
 	ft_printf("r%c\n", st);
 	return ;
 }
+
+void	rotate_both(t_dlist **a, t_dlist **b)
+{
+	t_dlist	*head;
+	t_dlist	*tail;
+// Rotate stack a
+	head = *a;
+	tail = head->prev;
+	*a = head->next;
+	head->end = NULL;
+	tail->end = head;
+// Rotate stack b
+	head = *b;
+	tail = head->prev;
+	*b = head->next;
+	head->end = NULL;
+	tail->end = head;
+	ft_printf("rr\n");
+}
+
+void	rrotate_both(t_dlist **a, t_dlist **b)
+{
+	t_dlist	*head;
+	t_dlist	*tail;
+// Rotate stack a
+	if ((*a)->end == NULL)
+		return ;
+	head = *a;
+	tail = head->prev;
+	*a = tail;
+	tail->prev->end = NULL;
+	tail->end = head;
+// Rotate stack b
+	if ((*b)->end == NULL)
+		return ;
+	head = *b;
+	tail = head->prev;
+	*b = tail;
+	tail->prev->end = NULL;
+	tail->end = head;
+	ft_printf("rrr\n");
+}
+
 // The last element goes at the top
 void	rrotate(t_dlist **stack, char st)
 {

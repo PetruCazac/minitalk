@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:43:00 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/14 08:52:19 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/14 11:13:22 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	moves(t_dlist **stack)
 		temp = temp->end;
 	}
 	i = m;
+	temp = *stack;
 	while (i > 0 && temp)
 	{
 		temp->mv_down = i;
@@ -41,7 +42,7 @@ void	find_place(t_dlist **a, t_dlist **b)
 	t_dlist	*tb;
 	t_dlist	*pos;
 
-	tb = *b;	
+	tb = *b;
 	pos = NULL;
 	while (tb)
 	{
@@ -64,7 +65,6 @@ void	find_place(t_dlist **a, t_dlist **b)
 // Takes into account the common moves. 
 void	calculate_moves(t_dlist **b)
 {
-	t_dlist	*element;
 	t_dlist	*tb;
 	int		up;
 	int		pos_up;
@@ -79,9 +79,9 @@ void	calculate_moves(t_dlist **b)
 	while (tb)
 	{
 		// Calculating the up common movements
-		tb->mv_up = up;
-		tb->pos->mv_up = pos_up;
-		while (tb->mv_up || up)
+		up = tb->mv_up;
+		pos_up = tb->pos->mv_up;
+		while (up && pos_up)
 		{
 			up--;
 			pos_up--;
@@ -103,9 +103,9 @@ void	calculate_moves(t_dlist **b)
 			tb->pos->rest_up = 0;
 		}
 		// Calculating the down common movements
-		tb->mv_down = down;
-		tb->pos->mv_down = pos_down;
-		while (tb->mv_down || down)
+		down = tb->mv_down;
+		pos_down = tb->pos->mv_down;
+		while (down && pos_down)
 		{
 			down--;
 			pos_down--;
@@ -141,13 +141,11 @@ void	calculate_moves(t_dlist **b)
 	}
 }
 
-int	compare_move(t_dlist **b)
+int	compare_move(t_dlist *tb)
 {
-	t_dlist	*tb;
 	int	combined_up;
 	int	combined_down;
 
-	tb = *b;
 	combined_up = tb->cm_up + tb->pos->rest_up + tb->rest_up;
 	combined_down = tb->cm_down + tb->pos->rest_down + tb->rest_down;
 	if (combined_up > combined_down)
@@ -164,17 +162,18 @@ int	compare_move(t_dlist **b)
 		tb->rest_down = 0;
 		return (combined_up);
 	}
+	return (-1);
 }
 
-void	choose_smaller(t_dlist **b)
+t_dlist	*choose_smaller(t_dlist **b)
 {
-	t_dlist	*temp;
+	t_dlist	*element;
 	t_dlist	*tb;
 	int		combined_moves;
 	int		simple_moves;
 
 	tb = *b;
-	temp = *b;
+	element = *b;
 	combined_moves = 0;
 	simple_moves = 0;
 	while (tb)
@@ -188,6 +187,7 @@ void	choose_smaller(t_dlist **b)
 			tb->pos->mv_down = 0;
 			tb->pos->mv_up = 0;
 			tb->mv = combined_moves;
+			tb->dir = 2;
 		}
 		else if (combined_moves >= simple_moves)
 		{
@@ -200,25 +200,20 @@ void	choose_smaller(t_dlist **b)
 			tb->pos->rest_down = 0;
 			tb->pos->rest_up = 0;
 			tb->mv = simple_moves;
+			tb->dir = 1;
 		}
-		if()
+		if(tb->mv < element->mv)
+			element = tb;
 		tb = tb->end;
 	}
+	return (element);
 }
 
-t_dlist	*element_finder(t_dlist **b)
-{
-	t_dlist	*tb;
-
-}
-// The function will find calculate the optimum movement for each element in each stack
-// it will then return the element to be brought on top of the stack from a and b.
 t_dlist	*move_calculate(t_dlist **a, t_dlist **b)
 {
 	moves(b);
 	moves(a);
 	find_place(a, b);
 	calculate_moves(b);
-	choose_smaller(b);
-	return (element_finder(b));
+	return (choose_smaller(b));
 }

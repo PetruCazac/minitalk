@@ -6,29 +6,76 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 14:51:12 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/13 20:01:52 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/14 10:37:59 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
-// Check the function
+
+void	move_both(t_dlist *element, t_dlist **a, t_dlist **b)
+{
+	while (element->cm_down && element->cm_down)
+	{
+		if (element->cm_up != 0)
+		{
+			rotate_both(a, b);
+			element->cm_up--;
+		}
+		else if (element->cm_down != 0)
+		{
+			rrotate_both(a, b);
+			element->cm_down--;
+		}
+	}
+	while (element->rest_up != 0)
+	{	
+		rotate(b, 'b');
+		element->rest_up--;
+	}
+	while (element->rest_down != 0)
+	{	
+		rrotate(b, 'b');
+		element->rest_down--;
+	}
+	while (element->pos->rest_up != 0)
+	{	
+		rotate(b, 'b');
+		element->pos->rest_up--;
+	}
+	while (element->pos->rest_down != 0)
+	{	
+		rrotate(b, 'b');
+		element->pos->rest_down--;
+	}
+	push(b, a, 'a');
+}
+
 void	move_element(t_dlist *element, t_dlist **a, t_dlist **b)
 {
 	while ((*b) != element)
 	{
-		if (element->dir == 1 && (*b) != element)
+		if (element->mv_up != 0 && element->mv_down == 0 && (*b) != element)
 			rotate(b, 'b');
-		else if (element->dir == 2 && (*b) != element)
+		else if (element->mv_down != 0 && element->mv_up == 0 && (*b) != element)
 			rrotate(b, 'b');
 	}
 	while ((*a) != element->pos)
 	{
-		if (element->pos->dir == 1 && (*a) != element->pos)
+		if (element->pos->mv_up != 0 && element->pos->mv_down == 0 && (*a) != element->pos)
 			rotate(a, 'a');
-		else if (element->pos->dir == 2 && (*a) != element->pos)
+		else if (element->pos->mv_down != 0 && element->pos->mv_up == 0 && (*a) != element->pos)
 			rrotate(a, 'a');
 	}
 	push(b, a, 'a');
+}
+
+void	choose_move(t_dlist *element, t_dlist **a, t_dlist **b)
+{
+	if (element->dir == 1)
+		move_both(element, a, b);
+	if (element->dir == 2)
+		move_element(element, a, b);
+	return ;
 }
 
 void	final_rotate(t_dlist **a)
@@ -77,6 +124,6 @@ void	push_b(t_dlist **a, t_dlist **b)
 	}
 	sort_small(a);
 	while (count_list(b) != 0)
-		move_element(move_calculate(a, b), a, b);
+		choose_move(move_calculate(a, b), a, b);
 	final_rotate(a);
 }
