@@ -57,6 +57,7 @@ void	find_place(t_dlist **a, t_dlist **b)
 				if (pos->index < ta->index && pos->index > tb->index)
 					tb->pos = pos;
 			}
+			pos = NULL;
 			ta = ta->end;
 		}
 		tb = tb->end;
@@ -76,8 +77,10 @@ void	clean_moves(t_dlist	**stack)
 		temp->mv_down= 0;
 		temp->cm_up = 0;
 		temp->cm_down = 0;
+		temp->cm_mv = 0;
 		temp->rest_up = 0;
 		temp->rest_down = 0;
+		temp->cm_dir = 0;
 		temp->dir = 0;
 		temp->pos_up = 0;
 		temp->pos_down = 0;
@@ -85,7 +88,7 @@ void	clean_moves(t_dlist	**stack)
 	}
 }
 
-t_dlist	*move_calculate(t_dlist **a, t_dlist **b)
+t_dlist	**move_calculate(t_dlist **a, t_dlist **b, t_dlist **elem)
 {
 	clean_moves(a);
 	clean_moves(b);
@@ -93,5 +96,5 @@ t_dlist	*move_calculate(t_dlist **a, t_dlist **b)
 	moves(a);
 	find_place(a, b);
 	calculate_moves(b);
-	return (choose_smaller(b));
+	return (choose_smaller(b, elem));
 }

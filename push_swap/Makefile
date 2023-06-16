@@ -19,7 +19,7 @@ LIBRARY = -lft
 OBJ_PATH = obj
 
 SRC = push_swap.c init_check.c push_swap_utils.c list_utils.c sort_check.c\
-	sort_small.c presort.c push_swap_quiet.c push_b.c move_calculate.c\
+	sort_small.c presort.c push_b.c move_calculate.c\
 	move_calculate2.c choose_smaller.c
 
 OBJ = $(SRC:%.c=$(OBJ_PATH)/%.o)

@@ -32,6 +32,7 @@ typedef struct d_list
 	int				number;
 	int				cm_up;
 	int				cm_down;
+	int				cm_mv;
 	int				mv_up;
 	int				mv_down;
 	int				mv;
@@ -39,6 +40,7 @@ typedef struct d_list
 	int				rest_down;
 	int				pos_up;
 	int				pos_down;
+	int				cm_dir;
 	int				dir; //rotate upwards, all == 1, 11; rotate downwards, all == 2, 22
 }					t_dlist;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_calculate2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 13:20:55 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/14 15:22:07 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/14 23:20:41 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,16 @@ void	moves_solo(t_dlist **b)
 	t_dlist	*tb;
 
 	tb = *b;
-	if ((tb->mv_up + tb->pos->mv_down) < (tb->mv_down + tb->pos->mv_up))
-		tb->dir = 12;
-	else if ((tb->mv_up + tb->pos->mv_down) > (tb->mv_down + tb->pos->mv_up))
+	if ((tb->mv_up + tb->pos->mv_down) <= (tb->mv_down + tb->pos->mv_up))
+	{
+		tb->mv = tb->mv_up + tb->pos->mv_down;
 		tb->dir = 21;
-	tb = tb->end;
+	}
+	else if ((tb->mv_up + tb->pos->mv_down) > (tb->mv_down + tb->pos->mv_up))
+	{
+		tb->mv = tb->mv_down + tb->pos->mv_up;
+		tb->dir = 12;
+	}
 }
 
 void	calculate_moves(t_dlist **b)

@@ -12,9 +12,12 @@
 
 #include "../header/push_swap.h"
 
-void	move_both(t_dlist *element, t_dlist **a, t_dlist **b)
+void	move_both(t_dlist **elem, t_dlist **a, t_dlist **b)
 {
-	while ((*b) != element || (*a) != element->pos)
+	t_dlist	*element;
+
+	element = *elem;
+	while ((*b) != element && (*a) != element->pos)
 	{
 		if (element->dir == 11)
 			rotate_both(a, b);
@@ -32,8 +35,11 @@ void	move_both(t_dlist *element, t_dlist **a, t_dlist **b)
 	push(b, a, 'a');
 }
 
-void	move_element(t_dlist *element, t_dlist **a, t_dlist **b)
+void	move_element(t_dlist **elem, t_dlist **a, t_dlist **b)
 {
+	t_dlist	*element;
+
+	element = *elem;
 	while ((*b) != element)
 	{
 		if (element->dir == 21 && (*b) != element)
@@ -51,12 +57,16 @@ void	move_element(t_dlist *element, t_dlist **a, t_dlist **b)
 	push(b, a, 'a');
 }
 
-void	choose_move(t_dlist *element, t_dlist **a, t_dlist **b)
+void	make_move(t_dlist **elem, t_dlist **a, t_dlist **b)
 {
+	t_dlist	*element;
+
+	element = *elem;
 	if (element->dir == 11 || element->dir == 22)
-		move_both(element, a, b);
+		move_both(&element, a, b);
 	if (element->dir == 12 || element->dir == 21)
-		move_element(element, a, b);
+		move_element(&element, a, b);
+	*elem = NULL;
 	return ;
 }
 
@@ -86,13 +96,12 @@ void	final_rotate(t_dlist **a)
 	}
 }
 
-void	push_b(t_dlist **a, t_dlist **b)
+void	push_b(t_dlist **a, t_dlist **b, t_dlist **elem)
 {
 	int		max;
 	int		med;
 	int		j;
-	// t_dlist	*element;
-	
+
 	max = (find_max(a))->index;
 	med = max / 2;
 	j = count_list(a);
@@ -106,6 +115,9 @@ void	push_b(t_dlist **a, t_dlist **b)
 	}
 	sort_small(a);
 	while (count_list(b) != 0)
-		choose_move(move_calculate(a, b), a, b);
+	{
+		make_move(move_calculate(a, b, elem), a, b);
+		*elem = NULL;
+	}
 	final_rotate(a);
 }

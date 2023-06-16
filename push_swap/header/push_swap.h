@@ -29,13 +29,13 @@ t_dlist	*find_min(t_dlist **list);
 t_dlist	*find_max(t_dlist **list);
 int		sort_check(t_dlist **list);
 void	presort(t_dlist **a, t_dlist **b);
-void	push_b(t_dlist **a, t_dlist **b);
+void	push_b(t_dlist **a, t_dlist **b, t_dlist **elem);
 int		average (t_dlist **a, int size);
-t_dlist	*move_calculate(t_dlist **a, t_dlist **b);
+t_dlist	**move_calculate(t_dlist **a, t_dlist **b, t_dlist **elem);
 void	rotate_both(t_dlist **a, t_dlist **b);
 void	rrotate_both(t_dlist **a, t_dlist **b);
 void	calculate_moves(t_dlist **b);
-t_dlist	*choose_smaller(t_dlist **b);
-int		compare_move(t_dlist *tb);
+t_dlist	**choose_smaller(t_dlist **b, t_dlist **elem);
+void	compare_move(t_dlist **tb);
 
 #endif

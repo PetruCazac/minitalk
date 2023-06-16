@@ -28,8 +28,10 @@ t_dlist	*ft_dlstnew(int content)
 		tmp->mv_down= 0;
 		tmp->cm_up = 0;
 		tmp->cm_down = 0;
+		tmp->cm_mv = 0;
 		tmp->rest_up = 0;
 		tmp->rest_down = 0;
+		tmp->cm_dir = 0;
 		tmp->dir = 0;
 		tmp->pos_up = 0;
 		tmp->pos_down = 0;

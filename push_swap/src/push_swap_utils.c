@@ -56,14 +56,14 @@ void	rrotate_both(t_dlist **a, t_dlist **b)
 // Rotate stack a
 	if ((*a)->end == NULL)
 		return ;
+	if ((*b)->end == NULL)
+		return ;
 	head = *a;
 	tail = head->prev;
 	*a = tail;
 	tail->prev->end = NULL;
 	tail->end = head;
 // Rotate stack b
-	if ((*b)->end == NULL)
-		return ;
 	head = *b;
 	tail = head->prev;
 	*b = tail;

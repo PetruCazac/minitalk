@@ -12,52 +12,11 @@
 
 #include "../header/push_swap.h"
 
-void	simple_move(t_dlist **b, int moves)
+void	compare_move(t_dlist **b)
 {
 	t_dlist	*tb;
 
 	tb = *b;
-	tb->mv = moves;
-	tb->dir = 11;
-}
-
-void	combined_move(t_dlist **b, int moves)
-{
-	t_dlist	*tb;
-
-	tb = *b;
-	tb->mv = moves;
-	tb->dir = 22;
-}
-
-t_dlist	*choose_smaller(t_dlist **b)
-{
-	t_dlist	*element;
-	t_dlist	*tb;
-	int		combined;
-	int		simple;
-
-	tb = *b;
-	element = *b;
-	combined= 0;
-	simple = 0;
-	while (tb)
-	{
-		combined = compare_move(tb);
-		simple = tb->mv_down + tb->mv_up + tb->pos->mv_down + tb->pos->mv_up;
-		if (combined < simple)
-			combined_move(&tb, combined);
-		else if (combined >= simple)
-			simple_move(&tb, simple);
-		if(tb->mv < element->mv)
-			element = tb;
-		tb = tb->end;
-	}
-	return (element);
-}
-
-int	compare_move(t_dlist *tb)
-{
 	int	combined_up;
 	int	combined_down;
 
@@ -65,17 +24,36 @@ int	compare_move(t_dlist *tb)
 	combined_down = tb->cm_down + tb->pos_down + tb->rest_down;
 	if (combined_up > combined_down)
 	{
-		tb->cm_up = 0;
-		tb->pos_up = 0;
-		tb->rest_up = 0;
-		return (combined_down);
+		tb->cm_mv = combined_down;
+		tb->cm_dir = 22;
 	}
 	else if (combined_up <= combined_down)
 	{
-		tb->cm_down = 0;
-		tb->pos_down = 0;
-		tb->rest_down = 0;
-		return (combined_up);
+		tb->cm_mv = combined_up;
+		tb->cm_dir = 11;
 	}
-	return (-1);
+	return ;
+}
+
+t_dlist	**choose_smaller(t_dlist **b, t_dlist **elem)
+{
+	t_dlist	*element;
+	t_dlist	*tb;
+
+	tb = *b;
+	element = *b;
+	while (tb)
+	{
+		compare_move(&tb);
+		if (tb->mv > tb->cm_mv)
+		{
+			tb->mv = tb->cm_mv;
+			tb->dir = tb->cm_dir;
+		}
+		if(tb->mv < element->mv)
+			element = tb;
+		tb = tb->end;
+	}
+	*elem = element;
+	return (elem);
 }

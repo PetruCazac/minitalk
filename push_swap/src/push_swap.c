@@ -16,9 +16,11 @@ int	main(int argc, char **argv)
 {
 	t_dlist	*a;
 	t_dlist	*b;
+	t_dlist	*element;
 	
 	a = NULL;
 	b = NULL;
+	element = NULL;
 	if (argc < 2 || !argv[1])
 		return (EXIT_FAILURE);
 	if (check_input(argc, argv, &a) == 0)
@@ -34,6 +36,6 @@ int	main(int argc, char **argv)
 		return (EXIT_SUCCESS);
 	}
 	presort(&a, &b);
-	push_b(&a, &b);
+	push_b(&a, &b, &element);
 	return (EXIT_SUCCESS);
 }
