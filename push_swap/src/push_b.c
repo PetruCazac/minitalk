@@ -96,23 +96,40 @@ void	final_rotate(t_dlist **a)
 	}
 }
 
+void	prepush(t_dlist **a, t_dlist **b)
+{
+	int		max_lim;
+	int		min_lim;
+	int		count;
+	int		segment;
+
+	count = 0;
+	min_lim = 0;
+	segment = (find_max(a))->index / 3;
+	max_lim = segment;
+	while (count_list(a) != 3)
+	{
+		if ((*a)->index >= min_lim && (*a)->index < max_lim)
+		{
+			push(a, b, 'b');
+			if (count < (segment / 2))
+				rotate(b, 'b');
+			count++;
+		}
+		else if (count == segment)
+		{
+			min_lim = min_lim + segment;
+			max_lim = max_lim + segment;
+			count = 0;
+		}
+		else
+			rotate(a, 'a');
+	}
+}
+
 void	push_b(t_dlist **a, t_dlist **b, t_dlist **elem)
 {
-	int		max;
-	int		med;
-	int		j;
-
-	max = (find_max(a))->index;
-	med = max / 2;
-	j = count_list(a);
-	while (j != 3)
-	{
-		if ((*a)->index == 0 || (*a)->index == max || (*a)->index == med)
-			rotate(a, 'a');
-		else
-			push(a, b, 'b');
-		j = count_list(a);
-	}
+	prepush(a, b);
 	sort_small(a);
 	while (count_list(b) != 0)
 	{
