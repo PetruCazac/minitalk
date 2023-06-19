@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 10:55:38 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/14 15:18:19 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/19 11:15:43 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct d_list
 	int				pos_up;
 	int				pos_down;
 	int				cm_dir;
-	int				dir; //rotate upwards, all == 1, 11; rotate downwards, all == 2, 22
+	int				dir;
 }					t_dlist;
 
 # ifndef BUFFER_SIZE
