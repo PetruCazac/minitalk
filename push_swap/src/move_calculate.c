@@ -6,59 +6,32 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:43:00 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/13 13:51:16 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/19 12:38:06 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void	moves_b(t_dlist **b)
+void	moves(t_dlist **stack)
 {
 	int		i;
 	t_dlist	*temp;
 	int		m;
 
 	i = 0;
-	temp = *b;
-	m = count_list(b);
-	while (i <= (m / 2) && temp)
+	temp = *stack;
+	m = count_list(stack);
+	while (i <= m && temp)
 	{
-		temp->moves_b = i;
-		temp->direction = 1;
+		temp->mv_up = i;
 		i++;
 		temp = temp->end;
 	}
-	i = m / 2;
+	i = m;
+	temp = *stack;
 	while (i > 0 && temp)
 	{
-		temp->moves_b = i;
-		temp->direction = 2;
-		i--;
-		temp = temp->end;
-	}
-}
-
-void	moves_a(t_dlist **a)
-{
-	int		i;
-	t_dlist	*temp;
-	int		m;
-
-	i = 0;
-	temp = *a;
-	m = count_list(a);
-	while (i <= (m / 2)&& temp)
-	{
-		temp->moves_a = i;
-		temp->direction = 1;
-		i++;
-		temp = temp->end;
-	}
-	i = m / 2;
-	while (i > 0 && temp)
-	{
-		temp->moves_a = i;
-		temp->direction = 2;
+		temp->mv_down = i;
 		i--;
 		temp = temp->end;
 	}
@@ -75,46 +48,53 @@ void	find_place(t_dlist **a, t_dlist **b)
 	while (tb)
 	{
 		ta = *a;
-		tb->bigger = ta;
+		tb->pos = ta;
 		while (ta)
 		{
 			if (tb->index < ta->index)
 			{
-				pos = tb->bigger;
-				tb->bigger = ta;
+				pos = tb->pos;
+				tb->pos = ta;
 				if (pos->index < ta->index && pos->index > tb->index)
-					tb->bigger = pos;
+					tb->pos = pos;
 			}
+			pos = NULL;
 			ta = ta->end;
 		}
 		tb = tb->end;
 	}
 }
 
-t_dlist	*choose_smaller(t_dlist **b)
+void	clean_moves(t_dlist	**stack)
 {
-	t_dlist	*element;
-	t_dlist	*tb;
+	t_dlist	*temp;
 
-	tb = *b;
-	tb->moves = tb->moves_b + tb->bigger->moves_a;
-	element = tb;
-	while (tb)
+	temp = *stack;
+	while (temp)
 	{
-		if (tb->moves < element->moves)
-			element = tb;
-		tb = tb->end;
-		if (tb)
-			tb->moves = tb->moves_b + tb->bigger->moves_a;
+		temp->mv = 0;
+		temp->mv_up = 0;
+		temp->mv_down = 0;
+		temp->cm_up = 0;
+		temp->cm_down = 0;
+		temp->cm_mv = 0;
+		temp->rest_up = 0;
+		temp->rest_down = 0;
+		temp->cm_dir = 0;
+		temp->dir = 0;
+		temp->pos_up = 0;
+		temp->pos_down = 0;
+		temp = temp->end;
 	}
-	return (element);
 }
-// The function will find calculate the optimum movement for each element in each stack
-// it will then return the element to be brought on top of the stack from a and b.
-t_dlist	*move_calculate(t_dlist **a, t_dlist **b)
+
+t_dlist	**move_calculate(t_dlist **a, t_dlist **b, t_dlist **elem)
 {
-	moves_b(b);
-	moves_a(a);
+	clean_moves(a);
+	clean_moves(b);
+	moves(b);
+	moves(a);
 	find_place(a, b);
-	return (choose_smaller(b));
+	calculate_moves(b);
+	return (choose_smaller(b, elem));
 }

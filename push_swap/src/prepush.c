@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_check.c                                       :+:      :+:    :+:   */
+/*   prepush.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 17:04:06 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/19 13:56:15 by pcazac           ###   ########.fr       */
+/*   Created: 2023/06/11 14:51:12 by pcazac            #+#    #+#             */
+/*   Updated: 2023/06/19 12:45:28 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int	sort_check(t_dlist **list)
+void	prepush(t_dlist **a, t_dlist **b)
 {
-	t_dlist	*temp;
-	t_dlist	*temp2;
+	int		max_lim;
+	int		count;
+	int		segment;
 
-	temp = *list;
-	while (temp->end)
+	count = 0;
+	segment = (find_max(a))->index / 3;
+	max_lim = segment;
+	while (count_list(a) != 3)
 	{
-		temp2 = temp->end;
-		while (temp2)
+		if ((*a)->index >= (max_lim - segment) && (*a)->index < max_lim)
 		{
-			if (temp->number > temp2->number)
-				return (0);
-			temp2 = temp2->end;
+			push(a, b, 'b');
+			if (count < (segment / 2))
+				rotate(b, 'b');
+			count++;
 		}
-		temp = temp->end;
+		else if (count == segment)
+		{
+			max_lim = max_lim + segment;
+			count = 0;
+		}
+		else
+			rotate(a, 'a');
 	}
-	return (1);
 }

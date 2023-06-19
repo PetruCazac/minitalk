@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:27:24 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/11 18:13:55 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/19 12:39:24 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ void	insert(t_dlist	**head, t_dlist **temp, t_dlist **list)
 		return ;
 	min = *temp;
 	start = *head;
-	min->previous->next = min->next;
-	min->previous->end = min->end;
-	min->next->previous = min->previous;
+	min->prev->next = min->next;
+	min->prev->end = min->end;
+	min->next->prev = min->prev;
 	min->next = start;
 	min->end = start;
-	min->previous = start->previous;
-	min->previous->next = min;
-	if (min->previous->end)
-		min->previous->end = min;
-	start->previous = min;
+	min->prev = start->prev;
+	min->prev->next = min;
+	if (min->prev->end)
+		min->prev->end = min;
+	start->prev = min;
 	while (start->end)
 		start = start->end;
 	start = start->next;
@@ -88,10 +88,10 @@ void	presort(t_dlist **a, t_dlist **b)
 	pos = *b;
 	while (!sort_check(b))
 	{
-			min = find_min(&pos);
-			insert(&pos, &min, b);
-			pos = min;
-			pos = pos->end;
+		min = find_min(&pos);
+		insert(&pos, &min, b);
+		pos = min;
+		pos = pos->end;
 	}
 	assign(a, b);
 	return ;

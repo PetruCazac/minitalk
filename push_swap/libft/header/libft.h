@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 10:55:38 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/13 11:20:43 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/19 14:24:57 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,24 @@ typedef struct s_list
 
 typedef struct d_list
 {
-	struct d_list	*previous;
+	struct d_list	*prev;
 	struct d_list	*next;
 	struct d_list	*end;
-	struct d_list	*bigger;
+	struct d_list	*pos;
 	int				index;
 	int				number;
-	int				moves_a;
-	int				moves_b;
-	int				moves;
-	int				direction; //rotate upwards == 1; rotate downwards == 2
+	int				cm_up;
+	int				cm_down;
+	int				cm_mv;
+	int				mv_up;
+	int				mv_down;
+	int				mv;
+	int				rest_up;
+	int				rest_down;
+	int				pos_up;
+	int				pos_down;
+	int				cm_dir;
+	int				dir;
 }					t_dlist;
 
 # ifndef BUFFER_SIZE
@@ -70,7 +78,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);

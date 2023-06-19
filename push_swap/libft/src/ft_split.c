@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:52:17 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/11 08:26:23 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/19 19:18:55 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ static char	**assign(char **dst, const char *s, char c)
 		}
 		if (s[i] && occur_str(&s[i], c))
 			dst[n] = ft_substr(s, start, occur_str(&s[i], c));
+		if (dst[n] == NULL)
+			return (freeall(dst[n], dst), NULL);
 		i = i + occur_str(&s[i], c);
 		if (freeall(dst[n], dst))
 			return (NULL);

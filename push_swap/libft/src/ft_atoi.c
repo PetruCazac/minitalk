@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcazac <pcazac@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:38:55 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/03 10:24:16 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/19 14:15:28 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/libft.h"
 
-static int	transform(const char *s);
+static long	transform(const char *s);
 static int	ft_isspace(char str);
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	size_t	i;
-	int		j;
+	long	j;
 
 	i = 0;
 	j = 0;
@@ -33,10 +33,10 @@ int	ft_atoi(const char *str)
 	return (j);
 }
 
-static int	transform(const char *s)
+static long	transform(const char *s)
 {
-	int	i;
-	int	j;
+	int		i;
+	long	j;
 
 	j = 0;
 	i = 0;
