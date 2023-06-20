@@ -83,7 +83,7 @@ int	check_input(int argc, char **argv, t_dlist **a)
 	{
 		arr = ft_split(argv[i], ' ');
 		if (!arr[0])
-			return (0);
+			return (free(arr), 0);
 		else if (make_list(arr, a) == 0)
 		{
 			j = -1;
