@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 14:51:12 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/19 12:45:28 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/20 10:54:45 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	prepush(t_dlist **a, t_dlist **b)
 		if ((*a)->index >= (max_lim - segment) && (*a)->index < max_lim)
 		{
 			push(a, b, 'b');
-			if (count < (segment / 2))
+			if (count < (segment / 3))
 				rotate(b, 'b');
 			count++;
 		}

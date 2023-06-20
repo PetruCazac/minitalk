@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:52:17 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/19 19:18:55 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/20 09:32:08 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char		**assign(char **dst, const char *s, char c);
 static size_t	occur(char const *s, char c);
-static int		freeall(char *s, char **sn);
+void			freeall(char **s);
 static int		occur_str(char const *s, char c);
 
 char	**ft_split(char const *s, char c)
@@ -52,10 +52,8 @@ static char	**assign(char **dst, const char *s, char c)
 		if (s[i] && occur_str(&s[i], c))
 			dst[n] = ft_substr(s, start, occur_str(&s[i], c));
 		if (dst[n] == NULL)
-			return (freeall(dst[n], dst), NULL);
+			return (freeall(dst), NULL);
 		i = i + occur_str(&s[i], c);
-		if (freeall(dst[n], dst))
-			return (NULL);
 	}
 	return (dst);
 }
@@ -72,22 +70,17 @@ static int	occur_str(char const *s, char c)
 	return (i);
 }
 
-static int	freeall(char *s, char **sn)
+void	freeall(char **s)
 {
 	size_t	i;
 
 	i = 0;
-	if (s == NULL)
+	while (s[i])
 	{
-		while (sn[i])
-		{
-			free(sn[i]);
-			i++;
-		}
-		free(sn);
-		return (1);
+		free(s[i]);
+		i++;
 	}
-	return (0);
+	free(s);
 }
 
 static size_t	occur(char const *s, char c)

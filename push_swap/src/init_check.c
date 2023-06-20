@@ -6,7 +6,7 @@
 /*   By: pcazac <pcazac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 12:53:02 by pcazac            #+#    #+#             */
-/*   Updated: 2023/06/19 19:17:08 by pcazac           ###   ########.fr       */
+/*   Updated: 2023/06/20 10:43:07 by pcazac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,22 +79,20 @@ int	check_input(int argc, char **argv, t_dlist **a)
 	int		j;
 
 	i = 0;
-	j = -1;
 	while (++i < argc)
 	{
 		arr = ft_split(argv[i], ' ');
 		if (!arr[0])
-		{
-		
 			return (0);
-		}
-		if (make_list(arr, a) == 0)
+		else if (make_list(arr, a) == 0)
 		{
+			j = -1;
 			while (arr[++j])
 				free(arr[j]);
 			free(arr);
 			return (0);
 		}
+		j = -1;
 		while (arr[++j])
 			free(arr[j]);
 		free(arr);
