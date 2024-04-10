@@ -1,2 +1,3 @@
 push_swap_old
-
+*.o
+push_swap
