@@ -16,3 +16,4 @@ The algorithm that I implemented follows these steps:
 4. Knowing the size of the array, we can divide it into a few parts, arbitrarily (in my case, 3). This way, the numbers will already be sorted into 3 large groups by index. This reduces the number of operations.
 5. The next step consists of calculating for each number the optimal number of operations needed for it to be in its place. We choose the number that requires the least amount of operations and apply the steps to bring it back to stack A.
 6. After all the operations are completed, stack A is sorted.
+![image](https://github.com/PetruCazac/push_swap/assets/79046351/26f0a9d9-ac12-4a97-af7b-0e5274875eca)
